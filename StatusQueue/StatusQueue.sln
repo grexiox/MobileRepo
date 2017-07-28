@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusQueue.UWP", "StatusQu
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		StatusQueue\StatusQueue\StatusQueue.projitems*{51ec6a57-e49f-44e9-a72f-2c809477471e}*SharedItemsImports = 4
+		StatusQueue\StatusQueue\StatusQueue.projitems*{bf6a20ee-3fac-4ebd-9351-a29307f57948}*SharedItemsImports = 4
 		StatusQueue\StatusQueue\StatusQueue.projitems*{e70cceb3-83b8-4671-9dce-e3f9e7cc7b5a}*SharedItemsImports = 4
 		StatusQueue\StatusQueue\StatusQueue.projitems*{e92e4295-f87e-4a89-b9f2-4ff328eff343}*SharedItemsImports = 13
 	EndGlobalSection
