@@ -13,17 +13,17 @@ using Plugin.Connectivity;
 
 namespace StatusQueue.Services
 {
-	public class AzureDataStore : IDataStore<Item>
+	public class AzureDataStore : IDataStore<PostOffice>
 	{
         public bool UseAuthentication => false;
         public MobileServiceAuthenticationProvider AuthProvider => MobileServiceAuthenticationProvider.Facebook;
 
         bool isInitialized;
-		IMobileServiceSyncTable<Item> itemsTable;
+		IMobileServiceSyncTable<PostOffice> itemsTable;
 
 		public MobileServiceClient MobileService { get; set; }
 
-		public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+		public async Task<IEnumerable<PostOffice>> GetItemsAsync(bool forceRefresh = false)
 		{
 			await InitializeAsync();
 			if (forceRefresh)
@@ -32,7 +32,7 @@ namespace StatusQueue.Services
 			return await itemsTable.ToEnumerableAsync();
 		}
 
-		public async Task<Item> GetItemAsync(string id)
+		public async Task<PostOffice> GetItemAsync(string id)
 		{
 			await InitializeAsync();
 			await PullLatestAsync();
@@ -44,7 +44,7 @@ namespace StatusQueue.Services
 			return items[0];
 		}
 
-		public async Task<bool> AddItemAsync(Item item)
+		public async Task<bool> AddItemAsync(PostOffice item)
 		{
 			await InitializeAsync();
 			await PullLatestAsync();
@@ -54,7 +54,7 @@ namespace StatusQueue.Services
 			return true;
 		}
 
-		public async Task<bool> UpdateItemAsync(Item item)
+		public async Task<bool> UpdateItemAsync(PostOffice item)
 		{
 			await InitializeAsync();
 			await itemsTable.UpdateAsync(item);
@@ -63,7 +63,7 @@ namespace StatusQueue.Services
 			return true;
 		}
 
-		public async Task<bool> DeleteItemAsync(Item item)
+		public async Task<bool> DeleteItemAsync(PostOffice item)
 		{
 			await InitializeAsync();
 			await PullLatestAsync();
@@ -98,9 +98,9 @@ namespace StatusQueue.Services
 			}
 
 			var store = new MobileServiceSQLiteStore("app.db");
-			store.DefineTable<Item>();
+			store.DefineTable<PostOffice>();
 			await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
-			itemsTable = MobileService.GetSyncTable<Item>();
+			itemsTable = MobileService.GetSyncTable<PostOffice>();
 
 			isInitialized = true;
 		}
@@ -114,7 +114,7 @@ namespace StatusQueue.Services
 			}
 			try
 			{
-				await itemsTable.PullAsync($"all{typeof(Item).Name}", itemsTable.CreateQuery());
+				await itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.CreateQuery());
 			}
 			catch (Exception ex)
 			{
@@ -158,7 +158,7 @@ namespace StatusQueue.Services
 						await error.CancelAndDiscardItemAsync();
 					}
 
-					Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
+					Debug.WriteLine(@"Error executing sync operation. PostOffice: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
 				}
 			}
 			catch (Exception ex)

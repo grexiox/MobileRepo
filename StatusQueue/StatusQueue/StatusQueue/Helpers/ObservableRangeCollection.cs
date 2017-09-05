@@ -49,7 +49,7 @@ namespace StatusQueue.Helpers
 				}
 
 				OnPropertyChanged(new PropertyChangedEventArgs("Count"));
-				OnPropertyChanged(new PropertyChangedEventArgs("Item[]"));
+				OnPropertyChanged(new PropertyChangedEventArgs("PostOffice[]"));
 				OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
 				return;
@@ -63,7 +63,7 @@ namespace StatusQueue.Helpers
 			}
 
 			OnPropertyChanged(new PropertyChangedEventArgs("Count"));
-			OnPropertyChanged(new PropertyChangedEventArgs("Item[]"));
+			OnPropertyChanged(new PropertyChangedEventArgs("PostOffice[]"));
 			OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, changedItems, startIndex));
 		}
 

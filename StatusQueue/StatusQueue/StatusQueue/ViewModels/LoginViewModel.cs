@@ -52,7 +52,7 @@ namespace StatusQueue.ViewModels
 			var authentication = DependencyService.Get<IAuthenticator>();
 			authentication.ClearCookies();
 
-			var dataStore = DependencyService.Get<IDataStore<Item>>() as AzureDataStore;
+			var dataStore = DependencyService.Get<IDataStore<PostOffice>>() as AzureDataStore;
 			await dataStore.InitializeAsync();
 
             if (dataStore.UseAuthentication)

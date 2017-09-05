@@ -8,16 +8,16 @@ namespace StatusQueue.Views
 {
 	public partial class NewItemPage : ContentPage
 	{
-		public Item Item { get; set; }
+		public PostOffice Item { get; set; }
 
 		public NewItemPage()
 		{
 			InitializeComponent();
 
-			Item = new Item
+			Item = new PostOffice
 			{
-				Text = "Item name",
-				Description = "This is a nice description"
+				City = "PostOffice name",
+				State = "This is a nice description"
 			};
 
 			BindingContext = this;

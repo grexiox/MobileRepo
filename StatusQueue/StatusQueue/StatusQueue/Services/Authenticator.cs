@@ -74,7 +74,7 @@ namespace StatusQueue.Services
 				if (isReauthenticating)
 					return response;
 
-				var client = DependencyService.Get<IDataStore<Item>>() as AzureDataStore;
+				var client = DependencyService.Get<IDataStore<PostOffice>>() as AzureDataStore;
 
 				string authToken = client.MobileService.CurrentUser.MobileServiceAuthenticationToken;
 				await semaphore.WaitAsync();
