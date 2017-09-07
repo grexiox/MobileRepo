@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Plugin.Connectivity;
+using System.Net.Http;
 
 namespace StatusQueue.Services
 {
@@ -78,10 +79,10 @@ namespace StatusQueue.Services
 			if (isInitialized)
 				return;
 
-			AuthenticationHandler handler = null;
+            DelegatingHandler handler = null;
 
 			if (UseAuthentication)
-				handler = new AuthenticationHandler();
+				handler = new CustomApiAuthenticator();
 
 			MobileService = new MobileServiceClient(App.AzureMobileAppUrl, handler)
 			{

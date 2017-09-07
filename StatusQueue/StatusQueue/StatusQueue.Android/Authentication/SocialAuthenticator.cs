@@ -6,6 +6,7 @@ using StatusQueue.Services;
 
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
+using Newtonsoft.Json.Linq;
 
 [assembly: Dependency(typeof(StatusQueue.Droid.Authentication.SocialAuthenticator))]
 namespace StatusQueue.Droid.Authentication
@@ -17,7 +18,7 @@ namespace StatusQueue.Droid.Authentication
             try
             {
 
-                return await client.LoginAsync(Forms.Context, provider, parameters);
+                return await client.LoginAsync(provider, new JObject());
 
             }
             catch (Exception e)

@@ -13,13 +13,14 @@ namespace StatusQueue
 	{
         //MUST use HTTPS, neglecting to do so will result in runtime errors on iOS
 		public static bool AzureNeedsSetup => AzureMobileAppUrl == "https://CONFIGURE-THIS-URL.azurewebsites.net";
-		public static string AzureMobileAppUrl = "https://[CONFIGURE-THIS-URL].azurewebsites.net";
+		public static string AzureMobileAppUrl = "http://backendmobilequeue.azurewebsites.net";
         public static IDictionary<string, string> LoginParameters => null;
 
         public App()
 		{
 			InitializeComponent();
-
+            //needed do not execute login operation
+            Settings.UserId = "not empty";
 			if (AzureNeedsSetup)
 				DependencyService.Register<MockDataStore>();
 			else
@@ -46,6 +47,8 @@ namespace StatusQueue
 
         public static void GoToMainPage()
         {
+            Current.MainPage = new MainScreen();
+            /*
             Current.MainPage = new TabbedPage
 			{
 				Children =
@@ -61,7 +64,7 @@ namespace StatusQueue
 						Icon = Device.OnPlatform("tab_about.png",null,null)
 					},
 				}
-			};
+			};*/
         }
 	}
 }
