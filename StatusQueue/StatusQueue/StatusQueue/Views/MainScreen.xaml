@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="StatusQueue.Views.MainScreen">
+             x:Class="StatusQueue.Views.MainScreen"
+             xmlns:vm="clr-namespace:StatusQueue.ViewModels;"
+             xmlns:res="clr-namespace:StatusQueue.ListViewDataTemplates;">
+    <ContentPage.BindingContext>
+        <vm:MainScreenViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome   dsfsto Xamarin Forms!" />
+            <Button HeightRequest="100"  Text="Wybierz Swoją pocztę" />
+            <BoxView Color="{StaticResource Primary}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Red"/>
+            <Label Text="fskfjdsk"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Color x:Key="CustomColor">#004B86</Color>
+    <DataTemplate x:Name="SelectedPostOfficeTemplate">
+        <ViewCell>
+            <StackLayout>
+                <Label Text="{Binding Street}"/>
+                <Label Text="{Binding PostalCode}"/>
+                <Label Text="{Binding OpeningHours}"/>
+            </StackLayout>
+        </ViewCell>
+    </DataTemplate>
+</ResourceDictionary>
