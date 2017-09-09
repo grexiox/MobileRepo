@@ -16,7 +16,7 @@ namespace StatusQueue.Services
 {
 	public class AzureDataStore : IDataStore<PostOffice>
 	{
-        public bool UseAuthentication => false;
+        public bool UseAuthentication => true;
         public MobileServiceAuthenticationProvider AuthProvider => MobileServiceAuthenticationProvider.Facebook;
 
         bool isInitialized;
@@ -92,13 +92,13 @@ namespace StatusQueue.Services
 				}
 			};
 
-			if (UseAuthentication && !string.IsNullOrWhiteSpace(Settings.AuthToken) && !string.IsNullOrWhiteSpace(Settings.UserId))
-			{
-				MobileService.CurrentUser = new MobileServiceUser(Settings.UserId);
-				MobileService.CurrentUser.MobileServiceAuthenticationToken = Settings.AuthToken;
-			}
+            if (UseAuthentication && !string.IsNullOrWhiteSpace(Settings.AuthToken) && !string.IsNullOrWhiteSpace(Settings.UserId))
+            {
+                MobileService.CurrentUser = new MobileServiceUser(Settings.UserId);
+                MobileService.CurrentUser.MobileServiceAuthenticationToken = Settings.AuthToken;
+            }
 
-			var store = new MobileServiceSQLiteStore("app.db");
+            var store = new MobileServiceSQLiteStore("app.db");
 			store.DefineTable<PostOffice>();
 			await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
 			itemsTable = MobileService.GetSyncTable<PostOffice>();
@@ -115,7 +115,7 @@ namespace StatusQueue.Services
 			}
 			try
 			{
-				await itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.CreateQuery());
+                itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.Where(p=>p.State=="śląskie"));
 			}
 			catch (Exception ex)
 			{
