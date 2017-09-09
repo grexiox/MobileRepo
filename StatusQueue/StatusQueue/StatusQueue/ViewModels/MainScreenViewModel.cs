@@ -11,6 +11,7 @@ namespace StatusQueue.ViewModels
         {
             SelectedPostOffices = new List<PostOffice>();
             SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
+            SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
         }
         public IList<PostOffice> SelectedPostOffices { get; set; }
     }

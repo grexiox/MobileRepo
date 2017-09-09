@@ -9,12 +9,13 @@ using Xamarin.Forms.Xaml;
 
 namespace StatusQueue.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TestPage : ContentPage
 	{
 		public TestPage ()
 		{
 			InitializeComponent ();
-		}
+            var button = Content.FindByName<Button>("RefreshButton");
+        }
 	}
 }

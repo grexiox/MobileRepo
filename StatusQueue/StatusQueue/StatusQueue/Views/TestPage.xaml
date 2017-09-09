@@ -3,25 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusQueue.Views.TestPage">
     <ContentPage.Content>
-        <Grid BackgroundColor="Green" HorizontalOptions="End" VerticalOptions="Start">
+        
+        <Grid BackgroundColor="{StaticResource PrimaryDark}" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Text="34-332" />
-            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="Koszarawa" />
-            <Label FontSize="30"  HorizontalOptions="Start" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="Stan:" />
+            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Text="Poczta:" />
+            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="34-332" />
+            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="Koszarawa" />
+            <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="3" Text="08:00:16:00" />
+            <BoxView Grid.Row="0" BackgroundColor="Black" Grid.Column="1" Grid.RowSpan="4"></BoxView>
             <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" Text="10" />
-            <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="1" Text="osób w kolejce" />
-            <Button VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="4" Grid.Row="3" Text="Refresh"/>
+            <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="0" Text="osób w kolejce" />
+            <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="1" Text="15" />
+            <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="1" Text="min. przybliżony" />
+            <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="2" Text="czas oczekiwania" />
+            <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="3" Text="Up" />
+            <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="3" Text="Tendencja (1.godz.)" />
+
+            <Button x:Name="RefreshButton" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="4" Grid.Row="0" Grid.RowSpan="4"  Text="..."/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
