@@ -15,7 +15,7 @@ namespace StatusQueue.Views
 		public TestPage ()
 		{
 			InitializeComponent ();
-            var button = Content.FindByName<Button>("RefreshButton");
+           // var button = Content.FindByName<Button>("RefreshButton");
         }
 	}
 }

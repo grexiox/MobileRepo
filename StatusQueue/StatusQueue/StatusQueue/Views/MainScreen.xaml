@@ -11,7 +11,6 @@
             <DataTemplate x:Key="SelectedPostOfficeTemplate">
                 <ViewCell>
                     <Grid BackgroundColor="{StaticResource PrimaryDark}" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -45,7 +44,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Button HeightRequest="100"  Text="Wybierz Swoją pocztę" />
+            <Button HeightRequest="100" Clicked="OnPostSelectButton"  Text="Wybierz Swoją pocztę" />
             <BoxView Color="{StaticResource Primary}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
             <ListView 
                 RowHeight="100"

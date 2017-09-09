@@ -16,5 +16,9 @@ namespace StatusQueue.Views
 		{
 			InitializeComponent ();
 		}
-	}
+        void OnPostSelectButton(object sender, EventArgs args)
+        {
+            Application.Current.MainPage = new SelectionList();
+        }
+    }
 }

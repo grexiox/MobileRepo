@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StatusQueue.Views.SelectionList"
+             xmlns:vm="clr-namespace:StatusQueue.ViewModels;">
+    <ContentPage.BindingContext>
+        <vm:SelectionListViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PostOfficeTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="{Binding PostalCode}" />
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding Street}" />
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding City}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <SearchBar 
+                Grid.Row="0"
+                SearchCommand="{Binding SearchCommand}" 
+                TextChanged="OnSearchTextChanged" 
+                Text="{Binding SearchedText}"/>
+            <ListView 
+                Grid.Row="1"
+                x:Name="SelectedItems"
+                ItemsSource="{Binding PostOffices}"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                CachingStrategy="RecycleElement"
+                ItemTemplate="{StaticResource PostOfficeTemplate}">
+                
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
