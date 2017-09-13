@@ -11,6 +11,7 @@ using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using Plugin.Connectivity;
 using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace StatusQueue.Services
 {
@@ -124,6 +125,15 @@ namespace StatusQueue.Services
 			}
 			return true;
 		}
+
+        //public async Task<JToken> GetStatus(string postId)
+        //{
+        //    await InitializeAsync();
+        //    var parameters = new Dictionary<string, string>();
+        //    parameters.Add("PostId", postId);
+        //    var str = await MobileService.InvokeApiAsync("Post", HttpMethod.Get, parameters);
+        //    return str;
+        //}
 
 
 		public async Task<bool> SyncAsync()

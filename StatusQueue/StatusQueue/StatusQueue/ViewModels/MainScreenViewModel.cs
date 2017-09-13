@@ -1,4 +1,5 @@
-﻿using StatusQueue.Models;
+﻿using StatusQueue.Helpers;
+using StatusQueue.Models;
 using StatusQueue.Views;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,15 @@ namespace StatusQueue.ViewModels
         public MainScreenViewModel()
         {
             SelectedPostOffices = new List<PostOffice>();
-            SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
-            SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
+            var selectedPostId = DataKeeper.LoadSelectedPost();
+            if(!string.IsNullOrWhiteSpace(selectedPostId))
+            {
+               // var ret = DataStore.GetStatus(selectedPostId);
+
+            }
+
+            //SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
+            //SelectedPostOffices.Add(new PostOffice { PostalCode = "pp", OpeningHours = "tt", Street = "str" });
             //SelectedPost = new Command(ButtonClicked);
         }
 

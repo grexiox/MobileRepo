@@ -35,6 +35,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ControlsEx\ClickableImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataKeeper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ImageResourceExstension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\StringExstensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CustomApiAuthenticator.cs" />

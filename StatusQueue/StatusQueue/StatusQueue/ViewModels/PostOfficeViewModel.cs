@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StatusQueue.Helpers;
+using StatusQueue.Views;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,7 +16,8 @@ namespace StatusQueue.ViewModels
 
         private void ExecuteSelectPostCommand()
         {
-            //  throw new NotImplementedException();
+            DataKeeper.SaveSelectedPost(Id);
+            Application.Current.MainPage = new MainScreen();
         }
 
         public string Id { get; set; }
