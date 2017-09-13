@@ -10,6 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\plus.png">
+      <CustomToolNamespace>       </CustomToolNamespace>
+      <LogicalName>Plus</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -30,6 +34,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ControlsEx\ClickableImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ImageResourceExstension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\StringExstensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CustomApiAuthenticator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainScreenViewModel.cs" />

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusQueue.Views.SelectionList"
-             xmlns:vm="clr-namespace:StatusQueue.ViewModels;">
+             xmlns:vm="clr-namespace:StatusQueue.ViewModels;"
+             xmlns:local="clr-namespace:StatusQueue.Helpers;">
     <ContentPage.BindingContext>
         <vm:SelectionListViewModel />
     </ContentPage.BindingContext>
@@ -10,10 +11,19 @@
         <ResourceDictionary>
             <DataTemplate x:Key="PostOfficeTemplate">
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="{Binding PostalCode}" />
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding Street}" />
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding City}" />
+
+                        <Image Source="{local:ImageResource Plus}"   HorizontalOptions="End">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding SelectPostCommand}"
+                                    CommandParameter="Image1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
@@ -38,7 +48,7 @@
                 HorizontalOptions="FillAndExpand"
                 CachingStrategy="RecycleElement"
                 ItemTemplate="{StaticResource PostOfficeTemplate}">
-                
+
             </ListView>
         </Grid>
     </ContentPage.Content>

@@ -35,7 +35,9 @@ namespace StatusQueue.ViewModels
         {
             if(!string.IsNullOrEmpty(SearchedText))
             {
-                var temp = _orginalList.Where(p => p.City.Contains(SearchedText,StringComparison.OrdinalIgnoreCase));
+                var temp = _orginalList.Where(p => p.City.Contains(SearchedText, StringComparison.OrdinalIgnoreCase)
+                || p.PostalCode.Contains(SearchedText, StringComparison.OrdinalIgnoreCase)
+                || p.Street.Contains(SearchedText, StringComparison.OrdinalIgnoreCase));
                 searchedMode = true;
                 PostOffices.ReplaceRange(temp);
             }
@@ -62,7 +64,8 @@ namespace StatusQueue.ViewModels
                 PostOffices.Clear();
                 var listOffice = await DataStore.GetItemsAsync(true);
                 var mapper = config.CreateMapper();
-                _orginalList = listOffice.Select(p => mapper.Map<PostOfficeViewModel>(p)).ToList();
+                _orginalList = listOffice.Select(p => mapper.Map<PostOfficeViewModel>(p)).ToList().OrderByDescending(p => p.IsAvailable);
+                _orginalList = TestPurpose(_orginalList);
                 PostOffices.ReplaceRange(_orginalList);
             }
             catch (Exception ex)
@@ -79,6 +82,13 @@ namespace StatusQueue.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        private IEnumerable<PostOfficeViewModel> TestPurpose(IEnumerable<PostOfficeViewModel> orginalList)
+        {
+            _orginalList.FirstOrDefault(p => p.PostalCode == "34-332").IsAvailable = 1;
+            _orginalList.FirstOrDefault(p => p.PostalCode == "30-091").IsAvailable = 1;
+            return _orginalList.OrderByDescending(p => p.IsAvailable);
         }
     }
 }

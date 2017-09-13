@@ -115,7 +115,7 @@ namespace StatusQueue.Services
 			}
 			try
 			{
-                itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.Where(p=>p.State=="śląskie"));
+                itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.CreateQuery());
 			}
 			catch (Exception ex)
 			{

@@ -33,11 +33,11 @@
             get { return city; }
             set { SetProperty(ref city, value); }
         }
-        string url = string.Empty;
-        public string Url
+        int isAvailable = 0;
+        public int IsAvailable
         {
-            get { return url; }
-            set { SetProperty(ref url, value); }
+            get { return isAvailable; }
+            set { SetProperty(ref isAvailable, value); }
         }
     }
 }
