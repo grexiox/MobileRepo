@@ -116,7 +116,7 @@ namespace StatusQueue.Services
 			}
 			try
 			{
-                itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.CreateQuery());
+                await itemsTable.PullAsync($"all{typeof(PostOffice).Name}", itemsTable.CreateQuery());
 			}
 			catch (Exception ex)
 			{
