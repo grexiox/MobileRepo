@@ -12,7 +12,18 @@ namespace StatusQueue.ViewModels
 {
     public class SelectionListViewModel : BaseViewModel
     {
-        static MapperConfiguration config;
+        static MapperConfiguration _config;
+        MapperConfiguration config
+        {
+            get
+            {
+                if (_config == null)
+                {
+                    _config = new MapperConfiguration(cfg => cfg.CreateMap<PostOffice, PostOfficeViewModel>());
+                }
+                return _config;
+            }
+        }
         bool searchedMode = false;
         public Command LoadPostOfficeItemsCommand { get; set; }
         public Command SearchCommand { get; set; }
@@ -22,10 +33,6 @@ namespace StatusQueue.ViewModels
         public SelectionListViewModel()
         {
             PostOffices = new ObservableRangeCollection<PostOfficeViewModel>();
-            if (config == null)
-            {
-                config = new MapperConfiguration(cfg => cfg.CreateMap<PostOffice, PostOfficeViewModel>());
-            }
             LoadPostOfficeItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             SearchCommand = new Command(() =>ExecuteSearchCommand());
             TextChangedCommand = new Command(() => ExecuteSearchCommand());
@@ -66,7 +73,6 @@ namespace StatusQueue.ViewModels
                 var listOffice = await DataStore.GetItemsAsync(true);
                 var mapper = config.CreateMapper();
                 _orginalList = listOffice.Select(p => mapper.Map<PostOfficeViewModel>(p)).ToList().OrderByDescending(p => p.IsAvailable);
-              //  _orginalList = TestPurpose(_orginalList);
                 PostOffices.ReplaceRange(_orginalList);
             }
             catch (Exception ex)

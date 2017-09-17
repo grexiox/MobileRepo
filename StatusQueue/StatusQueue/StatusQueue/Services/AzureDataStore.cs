@@ -15,15 +15,15 @@ using Newtonsoft.Json.Linq;
 
 namespace StatusQueue.Services
 {
-	public class AzureDataStore : IDataStore<PostOffice>
+	public class AzureDataStore : AzureDataStoreBase, IDataStore<PostOffice>
 	{
-        public bool UseAuthentication => true;
+
         public MobileServiceAuthenticationProvider AuthProvider => MobileServiceAuthenticationProvider.Facebook;
 
-        bool isInitialized;
-		IMobileServiceSyncTable<PostOffice> itemsTable;
 
-		public MobileServiceClient MobileService { get; set; }
+        IMobileServiceSyncTable<PostOffice> itemsTable;
+
+
 
 		public async Task<IEnumerable<PostOffice>> GetItemsAsync(bool forceRefresh = false)
 		{
@@ -77,28 +77,10 @@ namespace StatusQueue.Services
 
 		public async Task InitializeAsync()
 		{
-			if (isInitialized)
-				return;
+            if (isInitialized)
+                return;
 
-            DelegatingHandler handler = null;
-
-			if (UseAuthentication)
-				handler = new CustomApiAuthenticator();
-
-			MobileService = new MobileServiceClient(App.AzureMobileAppUrl, handler)
-			{
-				SerializerSettings = new MobileServiceJsonSerializerSettings
-				{
-					CamelCasePropertyNames = true
-				}
-			};
-
-            if (UseAuthentication && !string.IsNullOrWhiteSpace(Settings.AuthToken) && !string.IsNullOrWhiteSpace(Settings.UserId))
-            {
-                MobileService.CurrentUser = new MobileServiceUser(Settings.UserId);
-                MobileService.CurrentUser.MobileServiceAuthenticationToken = Settings.AuthToken;
-            }
-
+            Initialize();
             var store = new MobileServiceSQLiteStore("app.db");
 			store.DefineTable<PostOffice>();
 			await MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());

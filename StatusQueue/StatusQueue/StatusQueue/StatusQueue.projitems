@@ -11,7 +11,8 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\plus.png">
-      <CustomToolNamespace>       </CustomToolNamespace>
+      <CustomToolNamespace>
+      </CustomToolNamespace>
       <LogicalName>Plus</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml">
@@ -38,9 +39,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\DataKeeper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ImageResourceExstension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\StringExstensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\JsonObject\PostValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureDataJsonService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureDataStoreBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CustomApiAuthenticator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IJsonService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainScreenViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PostOfficeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SelectedPostOfficeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SelectionListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -84,9 +90,6 @@
       <DependentUpon>TestPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainScreen.xaml">

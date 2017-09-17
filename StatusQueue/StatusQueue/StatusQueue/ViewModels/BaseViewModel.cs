@@ -12,8 +12,9 @@ namespace StatusQueue.ViewModels
 		/// Get the azure service instance
 		/// </summary>
 		public IDataStore<PostOffice> DataStore => DependencyService.Get<IDataStore<PostOffice>>();
+      
 
-		bool isBusy = false;
+        bool isBusy = false;
 		public bool IsBusy
 		{
 			get { return isBusy; }

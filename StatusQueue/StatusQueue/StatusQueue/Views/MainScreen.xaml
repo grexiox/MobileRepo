@@ -24,13 +24,13 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Text="Poczta:" />
-                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="34-332" />
-                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="Koszarawa" />
-                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="3" Text="08:00:16:00" />
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="{Binding PostalCode}" />
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding City}" />
+                        <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="3" Text="{Binding OpeningHours}" />
                         <BoxView Grid.Row="0" BackgroundColor="Black" Grid.Column="1" Grid.RowSpan="4"></BoxView>
-                        <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" Text="10" />
+                        <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="0" Text="{Binding StatusQueue}" />
                         <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="0" Text="osób w kolejce" />
-                        <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="1" Text="15" />
+                        <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="1" Text="{Binding ExpectedTime}" />
                         <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="1" Text="min. przybliżony" />
                         <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="2" Text="czas oczekiwania" />
                         <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="3" Text="Up" />

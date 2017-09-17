@@ -21,10 +21,13 @@ namespace StatusQueue
 			InitializeComponent();
             //needed do not execute login operation
             Settings.UserId = "not empty";
-			if (AzureNeedsSetup)
-				DependencyService.Register<MockDataStore>();
-			else
-				DependencyService.Register<AzureDataStore>();
+            if (AzureNeedsSetup)
+                DependencyService.Register<MockDataStore>();
+            else
+            {
+                DependencyService.Register<AzureDataStore>();
+                DependencyService.Register<AzureDataJsonService>();
+            }
 
 			SetMainPage();
 		}
