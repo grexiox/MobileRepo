@@ -52,6 +52,7 @@ namespace StatusQueue.ViewModels
         }
 
         IEnumerable<PostOfficeViewModel> _orginalList;
+
         async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)
@@ -65,7 +66,7 @@ namespace StatusQueue.ViewModels
                 var listOffice = await DataStore.GetItemsAsync(true);
                 var mapper = config.CreateMapper();
                 _orginalList = listOffice.Select(p => mapper.Map<PostOfficeViewModel>(p)).ToList().OrderByDescending(p => p.IsAvailable);
-                _orginalList = TestPurpose(_orginalList);
+              //  _orginalList = TestPurpose(_orginalList);
                 PostOffices.ReplaceRange(_orginalList);
             }
             catch (Exception ex)
@@ -82,13 +83,6 @@ namespace StatusQueue.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        private IEnumerable<PostOfficeViewModel> TestPurpose(IEnumerable<PostOfficeViewModel> orginalList)
-        {
-            _orginalList.FirstOrDefault(p => p.PostalCode == "34-332").IsAvailable = 1;
-            _orginalList.FirstOrDefault(p => p.PostalCode == "30-091").IsAvailable = 1;
-            return _orginalList.OrderByDescending(p => p.IsAvailable);
         }
     }
 }
