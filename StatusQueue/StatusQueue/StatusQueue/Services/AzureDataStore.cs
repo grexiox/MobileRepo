@@ -108,16 +108,6 @@ namespace StatusQueue.Services
 			return true;
 		}
 
-        //public async Task<JToken> GetStatus(string postId)
-        //{
-        //    await InitializeAsync();
-        //    var parameters = new Dictionary<string, string>();
-        //    parameters.Add("PostId", postId);
-        //    var str = await MobileService.InvokeApiAsync("Post", HttpMethod.Get, parameters);
-        //    return str;
-        //}
-
-
 		public async Task<bool> SyncAsync()
 		{
 			if (!CrossConnectivity.Current.IsConnected)
