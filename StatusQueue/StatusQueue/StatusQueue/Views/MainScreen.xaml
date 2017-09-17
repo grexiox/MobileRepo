@@ -44,6 +44,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#80000000"/>
             <Button HeightRequest="100" Clicked="OnPostSelectButton"  Text="Wybierz Swoją pocztę" />
             <BoxView Color="{StaticResource Primary}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
             <ListView 

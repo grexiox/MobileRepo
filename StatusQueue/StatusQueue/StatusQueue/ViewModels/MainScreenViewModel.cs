@@ -45,14 +45,21 @@ namespace StatusQueue.ViewModels
 
       public async Task LoadData()
         {
-            var selectedPostId = DataKeeper.LoadSelectedPost();
-            if (!string.IsNullOrWhiteSpace(selectedPostId))
+            IsBusy = true;
+            try
             {
-                var selected = await DataStore.GetItemAsync(selectedPostId);
-                var item = Mapper.Map<SelectedPostOfficeViewModel>(selected);
-                SelectedPostOffices.Add(item);
-                OnPropertyChanged(nameof(SelectedPostOffices));
-                SelectedPostOffices.ToList().ForEach(i => i.RefreshData());
+                var selectedPostId = DataKeeper.LoadSelectedPost();
+                if (!string.IsNullOrWhiteSpace(selectedPostId))
+                {
+                    var selected = await DataStore.GetItemAsync(selectedPostId);
+                    var item = Mapper.Map<SelectedPostOfficeViewModel>(selected);
+                    SelectedPostOffices.Add(item);
+                    OnPropertyChanged(nameof(SelectedPostOffices));
+                    SelectedPostOffices.ToList().ForEach(i => i.RefreshData());
+                }
+            }finally
+            {
+                IsBusy = false;
             }
         }
     }

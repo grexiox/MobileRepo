@@ -7,6 +7,7 @@
     <ContentPage.BindingContext>
         <vm:SelectionListViewModel />
     </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="PostOfficeTemplate">
@@ -27,6 +28,7 @@
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
+            <local:NegateBooleanConverter x:Key="inverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -37,9 +39,11 @@
             </Grid.RowDefinitions>
             <SearchBar 
                 Grid.Row="0"
+                IsEnabled="{Binding IsBusy,Converter={StaticResource inverter}}"
                 SearchCommand="{Binding SearchCommand}" 
                 TextChanged="OnSearchTextChanged" 
                 Text="{Binding SearchedText}"/>
+            <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" />
             <ListView 
                 Grid.Row="1"
                 x:Name="SelectedItems"
