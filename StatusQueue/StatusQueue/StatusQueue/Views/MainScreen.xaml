@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <DataTemplate x:Key="SelectedPostOfficeTemplate">
                 <ViewCell>
-                    <Grid BackgroundColor="{StaticResource PrimaryDark}" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                    <Grid BackgroundColor="{StaticResource PrimaryDark}"  HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -24,6 +24,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
+                        <ActivityIndicator IsRunning="{Binding IsBusy}" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Grid.RowSpan="4" Color ="#80000000"/>
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Text="Poczta:" />
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="1" Text="{Binding PostalCode}" />
                         <Label HorizontalOptions="Start" Grid.Column="0" Grid.Row="2" Text="{Binding City}" />

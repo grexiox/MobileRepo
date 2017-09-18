@@ -28,6 +28,7 @@ namespace StatusQueue.ViewModels
 
         public async Task RefreshData()
         {
+            IsBusy = true;
             var data = await JsonService.GetDataForAPost(Id);
             if(!data.Result)
             {
@@ -39,7 +40,7 @@ namespace StatusQueue.ViewModels
             OnPropertyChanged(nameof(ExpectedTime));
             Tendency = data.Tendency;
             OnPropertyChanged(nameof(Tendency));
-
+            IsBusy = false;
         }
     }
 }
