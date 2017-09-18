@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StatusQueue.Views.MainScreen"
-             xmlns:vm="clr-namespace:StatusQueue.ViewModels;">
+             xmlns:vm="clr-namespace:StatusQueue.ViewModels;"
+             xmlns:local="clr-namespace:StatusQueue.Helpers;">
     <ContentPage.BindingContext>
         <vm:MainScreenViewModel />
     </ContentPage.BindingContext>
@@ -35,8 +36,14 @@
                         <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="2" Text="czas oczekiwania" />
                         <Label HorizontalOptions="Start" Grid.Column="2" Grid.Row="3" Text="Up" />
                         <Label HorizontalOptions="Start" Grid.Column="3" Grid.Row="3" Text="Tendencja (1.godz.)" />
+                        <Image Source="{local:ImageResource Refresh}" Grid.Column="4" Grid.Row="0" Grid.RowSpan="4">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding RefreshPostCommand}"
+                                    CommandParameter="Image1" />
+                            </Image.GestureRecognizers>
+                        </Image>
 
-                        <Button x:Name="RefreshButton" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="4" Grid.Row="0" Grid.RowSpan="4"  Text="..."/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

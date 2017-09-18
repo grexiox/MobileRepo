@@ -110,4 +110,11 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\refresh.png">
+	   <CustomToolNamespace>
+      </CustomToolNamespace>
+      <LogicalName>Refresh</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
